@@ -1,0 +1,33 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int row,col;
+    int sum = 0;
+    int totalelements = 16;
+    float average;
+   int arr[4][4]={{26,28,35,18}
+   ,{30,46,41,37}
+   ,{22,21,32,33}
+   ,{45,46,23,34}};
+   int maxtemp = 0;
+   int mintemp =arr[0][0];
+     cout<<"Temperature of each day "<<endl;
+   for( int i = 0; i < 4; i++){
+       cout<<"\nWeek "<<i+1<<":  ";
+       for ( int j = 0; j < 4; j++){
+           cout<<arr[i][j]<<"C  ";
+           if (maxtemp < arr[i][j])
+               maxtemp = arr[i][j];
+           if (mintemp > arr[i][j])
+               mintemp = arr[i][j];
+               sum +=arr[i][j];
+           }
+       }
+     average = sum/totalelements;
+    cout<<"\nMinimum Temperature is "<<mintemp<<" "<<endl;
+    cout<<"Maximum temperature is "<<maxtemp<<" "<<endl;
+    cout<<"Average  temperature is "<<average<<" "<<endl;
+
+    return 0;
+}
