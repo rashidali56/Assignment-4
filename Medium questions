@@ -1,0 +1,140 @@
+Qno1. Remove even numbers from vectors
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    vector<int> v(n);
+    cout << "Enter elements:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+
+   
+    for (int i = 0; i < v.size(); ) {
+        if (v[i] % 2 == 0)
+            v.erase(v.begin() + i);
+        else
+            i++;
+    }
+
+    cout << "Vector after removing even numbers:\n";
+    for (int x : v) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+Qno2. Find missing elements
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter size of first array: ";
+    cin >> n;
+
+    vector<int> a(n), b(n - 1);
+
+    cout << "Enter elements of first array:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> a[i];
+    }
+
+    cout << "Enter elements of second array (one element missing):\n";
+    for (int i = 0; i < n - 1; i++) {
+        cin >> b[i];
+    }
+
+    int sum1 = 0, sum2 = 0;
+
+    for (int x : a)
+        sum1 += x;
+    for (int x : b)
+        sum2 += x;
+
+    cout << "Missing element: " << (sum1 - sum2);
+
+    return 0;
+}
+
+Qno3. Check for duplicate elements
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n;
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    vector<int> v(n);
+    cout << "Enter elements:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+
+    bool hasDuplicate = false;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (v[i] == v[j]) {
+                hasDuplicate = true;
+                break;
+            }
+        }
+        if (hasDuplicate)
+            break;
+    }
+
+    if (hasDuplicate)
+        cout << "Vector contains duplicate elements.";
+    else
+        cout << "Vector does not contain duplicate elements.";
+
+    return 0;
+}
+
+
+Qno4. Count pairs with given sum
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int n, target;
+    cout << "Enter number of elements: ";
+    cin >> n;
+
+    vector<int> v(n);
+    cout << "Enter elements:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> v[i];
+    }
+
+    cout << "Enter target sum: ";
+    cin >> target;
+
+    int count = 0;
+
+    for (int i = 0; i < n; i++) {
+        for (int j = i + 1; j < n; j++) {
+            if (v[i] + v[j] == target)
+                count++;
+        }
+    }
+
+    cout << "Number of pairs with sum " << target << ": " << count;
+
+    return 0;
+}
