@@ -1,0 +1,120 @@
+#include <iostream>
+#include <string>
+using namespace std;
+
+const int ROWS = 5;
+const int COLS = 5;
+
+
+void inputPuzzle(char grid[ROWS][COLS]);
+int countHorizontalWords(char grid[ROWS][COLS]);
+int countVerticalWords(char grid[ROWS][COLS]);
+string findLongestWord(char grid[ROWS][COLS]);
+
+int main() {
+    char grid[ROWS][COLS];
+
+    inputPuzzle(grid);
+
+    int hWords = countHorizontalWords(grid);
+    int vWords = countVerticalWords(grid);
+    string longest = findLongestWord(grid);
+
+    cout << "\nNumber of horizontal words: " << hWords << endl;
+    cout << "Number of vertical words: " << vWords << endl;
+    cout << "Longest word: " << longest << endl;
+
+    return 0;
+}
+
+
+void inputPuzzle(char grid[ROWS][COLS]) {
+    cout << "Enter the crossword grid (" << ROWS << "x" << COLS << "):\n";
+    cout << "Use # for blocked cells\n";
+
+    for (int i = 0; i < ROWS; i++) {
+        for (int j = 0; j < COLS; j++) {
+            cin >> grid[i][j];
+        }
+    }
+}
+
+
+int countHorizontalWords(char grid[ROWS][COLS]) {
+    int count = 0;
+
+    for (int i = 0; i < ROWS; i++) {
+        int length = 0;
+        for (int j = 0; j < COLS; j++) {
+            if (grid[i][j] != '#') {
+                length++;
+            } else {
+                if (length >= 3)
+                    count++;
+                length = 0;
+            }
+        }
+        if (length >= 3)
+            count++;
+    }
+    return count;
+}
+
+
+int countVerticalWords(char grid[ROWS][COLS]) {
+    int count = 0;
+
+    for (int j = 0; j < COLS; j++) {
+        int length = 0;
+        for (int i = 0; i < ROWS; i++) {
+            if (grid[i][j] != '#') {
+                length++;
+            } else {
+                if (length >= 3)
+                    count++;
+                length = 0;
+            }
+        }
+        if (length >= 3)
+            count++;
+    }
+    return count;
+}
+
+string findLongestWord(char grid[ROWS][COLS]) {
+    string longest = "", current;
+
+ 
+    for (int i = 0; i < ROWS; i++) {
+        current = "";
+        for (int j = 0; j < COLS; j++) {
+            if (grid[i][j] != '#') {
+                current += grid[i][j];
+            } else {
+                if (current.length() > longest.length())
+                    longest = current;
+                current = "";
+            }
+        }
+        if (current.length() > longest.length())
+            longest = current;
+    }
+
+  
+    for (int j = 0; j < COLS; j++) {
+        current = "";
+        for (int i = 0; i < ROWS; i++) {
+            if (grid[i][j] != '#') {
+                current += grid[i][j];
+            } else {
+                if (current.length() > longest.length())
+                    longest = current;
+                current = "";
+            }
+        }
+        if (current.length() > longest.length())
+            longest = current;
+    }
+
+    return longest;
+}
