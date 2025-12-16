@@ -1,0 +1,154 @@
+Qno1. Initialize and print a vector
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    vector<int> v = {10, 20, 30, 40, 50};
+
+    cout << "Using traditional for loop:\n";
+    for (int i = 0; i < v.size(); i++) {
+        cout << v[i] << " ";
+    }
+
+    cout << "\nUsing range-based for loop:\n";
+    for (int x : v) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+Qno2. User input into a vector
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int N;
+    cout << "Enter number of elements: ";
+    cin >> N;
+
+    vector<int> v(N);
+
+    cout << "Enter " << N << " integers:\n";
+    for (int i = 0; i < N; i++) {
+        cin >> v[i];
+    }
+
+    cout << "Vector elements:\n";
+    for (int x : v) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+Qn03. Find Maximum and Minimum numbers
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int N;
+    cout << "Enter number of elements: ";
+    cin >> N;
+
+    vector<int> v(N);
+
+    cout << "Enter elements:\n";
+    for (int i = 0; i < N; i++) {
+        cin >> v[i];
+    }
+
+    int max = v[0];
+    int min = v[0];
+
+    for (int i = 1; i < N; i++) {
+        if (v[i] > max)
+            max = v[i];
+        if (v[i] < min)
+            min = v[i];
+    }
+
+    cout << "Maximum element: " << max << endl;
+    cout << "Minimum element: " << min << endl;
+
+    return 0;
+}
+
+Qno4. Reserve vector elements
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+void reverseVector(vector<int>& v) {
+    int start = 0, end = v.size() - 1;
+
+    while (start < end) {
+        int temp = v[start];
+        v[start] = v[end];
+        v[end] = temp;
+        start++;
+        end--;
+    }
+}
+
+int main() {
+    int N;
+    cout << "Enter number of elements: ";
+    cin >> N;
+
+    vector<int> v(N);
+
+    cout << "Enter elements:\n";
+    for (int i = 0; i < N; i++) {
+        cin >> v[i];
+    }
+
+    reverseVector(v);
+
+    cout << "Reversed vector:\n";
+    for (int x : v) {
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+Qno5. Count occurences of a target number
+
+#include <iostream>
+#include <vector>
+using namespace std;
+
+int main() {
+    int N, target, count = 0;
+
+    cout << "Enter number of elements: ";
+    cin >> N;
+
+    vector<int> v(N);
+
+    cout << "Enter elements:\n";
+    for (int i = 0; i < N; i++) {
+        cin >> v[i];
+    }
+
+    cout << "Enter target number: ";
+    cin >> target;
+
+    for (int i = 0; i < N; i++) {
+        if (v[i] == target)
+            count++;
+    }
+
+    cout << "Target appears " << count << " times.\n";
+
+    return 0;
+}
+
