@@ -1,0 +1,37 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int m, n;
+
+    cout << "Enter number of rows (m): ";
+    cin >> m;
+    cout << "Enter number of columns (n): ";
+    cin >> n;
+
+    int a[100][100], b[100][100];
+
+    cout << "Enter matrix elements:\n";
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            cin >> a[i][j];
+        }
+    }
+
+ 
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            b[n - j - 1][i] = a[i][j];
+        }
+    }
+
+    cout << "\nRotated Matrix (90° Counterclockwise):\n";
+    for (int i = 0; i < n; i++) {
+        for (int j = 0; j < m; j++) {
+            cout << b[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
